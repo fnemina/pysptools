@@ -2,7 +2,7 @@ from distutils.core import setup
 
 
 setup(name = "pysptools",
-    version = "0.14.2",
+    version = "0.14.3",
     description = "A hyperspectral imaging tools box",
     author = "Christian Therien",
     author_email = "ctherien@users.sourceforge.net",

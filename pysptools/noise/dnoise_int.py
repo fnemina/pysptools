@@ -101,7 +101,7 @@ class SavitzkyGolay(object):
             copyright of this file.
         """
         h, w, numBands = M.shape
-        self.dbands = np.ones((h, w, numBands), dtype=np.float)
+        self.dbands = np.ones((h, w, numBands), dtype=np.float32)
         for i in range(numBands):
             self.dbands[:,:,i] = self._denoise2d(M[:,:,i], window_size, order, derivative)
         return self.dbands
@@ -125,8 +125,8 @@ class SavitzkyGolay(object):
         # pad the signal at the extremes with
         # values taken from the signal itself
         N, p = M.shape
-        dn = np.ones((N,p), dtype=np.float)
-        long_signal = np.ndarray(p+2, dtype=np.float)
+        dn = np.ones((N,p), dtype=np.float32)
+        long_signal = np.ndarray(p+2, dtype=np.float32)
         for i in range(N):
             y = M[i]
             firstvals = y[0] - np.abs( y[1:half_window+1][::-1] - y[0] )
@@ -156,7 +156,7 @@ class SavitzkyGolay(object):
         exps = [ (k-n, n) for k in range(order+1) for n in range(k+1) ]
 
         # coordinates of points
-        ind = np.arange(-half_size, half_size+1, dtype=np.float64)
+        ind = np.arange(-half_size, half_size+1, dtype=np.float3264)
         dx = np.repeat( ind, window_size )
         dy = np.tile( ind, [window_size, 1]).reshape(window_size**2, )
 

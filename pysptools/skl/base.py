@@ -61,7 +61,7 @@ class HyperBaseClassifier(object):
             return self._convert2D(M[bbox[0]:bbox[2],bbox[1]:bbox[3],:])
         if 'poly' in r or 'raw' in r:
             masked = np.sum(self.mask == roi_id)
-            linear_cube = np.ndarray((masked, M.shape[2]), dtype=np.float)
+            linear_cube = np.ndarray((masked, M.shape[2]), dtype=np.float32)
             i = 0
             for x in range(M.shape[0]):
                 for y in range(M.shape[1]):
@@ -81,7 +81,7 @@ class HyperBaseClassifier(object):
     def _get_X(self, M):
         masked = np.sum(self.mask > 0)
         not_masked = M.shape[0] * M.shape[1] - masked
-        linear_cube = np.ndarray((not_masked, M.shape[2]), dtype=np.float)
+        linear_cube = np.ndarray((not_masked, M.shape[2]), dtype=np.float32)
         i = 0
         for x in range(M.shape[0]):
             for y in range(M.shape[1]):
