@@ -92,7 +92,7 @@ def _numpy_None_concatenate(A1, A2):
 
 def _numpy_to_cvxopt_matrix(A):
     from cvxopt import matrix
-    A = np.array(A, dtype=np.float3264)
+    A = np.array(A, dtype=np.float64)
     if A.ndim == 1:
         return matrix(A, (A.shape[0], 1), 'd')
     else:
@@ -147,7 +147,7 @@ def FCLS(M, U):
     Aeq = _numpy_to_cvxopt_matrix(np.ones((1,nvars)))
     beq = _numpy_to_cvxopt_matrix(np.ones(1))
 
-    M = np.array(M, dtype=np.float3264)
+    M = np.array(M, dtype=np.float64)
     X = np.zeros((N, nvars), dtype=np.float32)
     for n1 in range(N):
         d = matrix(M[n1], (p1, 1), 'd')
